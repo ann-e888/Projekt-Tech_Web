@@ -22,7 +22,7 @@ CUSTOMERS_STORAGE = get_customers_storage()
 PRODUCTS_STORAGE = storage.get_products_storage()
 
 
-@router.get("/get-customers")
+@router.get("/")
 async def get_customers() -> list[Customer]:
     return list(get_customers_storage().values())
 
@@ -69,7 +69,7 @@ async def delete_customer(customer_id: int) -> None:
         )
 
 
-@router.post("/add")
+@router.post("/")
 async def create_customer(customer: CustomerCreateSchema) -> Customer:
     index = len(CUSTOMERS_STORAGE)
     CUSTOMERS_STORAGE[index] = Customer(id=index, **customer.dict())
@@ -120,24 +120,3 @@ async def delete_order(customer_id: int, order_id: int) -> None:
     )
 
 
-
-#ORDERS SECTION
-# @router.get("/get-orders")
-# async def get_orders() -> list[Order]:
-#     return list(get_orders_storage().values())
-
-# @router.get("/{order_id}")
-# async def get_order(order_id: int) -> Order:
-#     try:
-#         return ORDERS_STORAGE[order_id]
-#     except KeyError:
-#         raise HTTPException(
-#             status_code=404, detail=f"Order with ID={order_id} does not exist."
-#         )
-    
-# @router.post("/order-add")
-# async def create_order(order: OrderCreateSchema) -> Order:
-#     index = len(ORDERS_STORAGE)
-#     ORDERS_STORAGE[index] = Order(id=index, **order.dict())
-
-#     return ORDERS_STORAGE[index]

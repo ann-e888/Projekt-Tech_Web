@@ -63,6 +63,7 @@ export const AddCustomerPage = () => {
       setNumber("");
     } catch (error) {
       console.error(error);
+      setResMessage("An error occurred while adding the customer. Please try again later.");
     }
   };
   
@@ -88,28 +89,24 @@ export const AddCustomerPage = () => {
           onChange={getName}
           value={name}
           placeholder="John"
-          type="text"
         ></input>
         <label>Surname</label>
         <input
           onChange={getSurname}
           value={surname}
           placeholder="Smith"
-          type="text"
         ></input>
         <label>Email</label>
         <input
           onChange={getEmail}
           value={email}
           placeholder="johnsmith@email.com"
-          type="text"
         ></input>
         <label>Phone Number</label>
         <input
           onChange={getNumber}
           value={phone_number}
           placeholder="999 999 999"
-          type="text"
         ></input>
         <button type="submit">Submit</button>
       </form>
